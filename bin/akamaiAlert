@@ -20,7 +20,7 @@ function per_template( dto ) {
 
 var commands = {
     templates: function () {
-        Alert.templates( per_template );
+        Alerts.templates( per_template );
     }
 };
 
