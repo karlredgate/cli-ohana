@@ -1,0 +1,17 @@
+{
+  "requirements": {
+    "node": "6.2.2"
+  },
+  "commands": [
+    {
+      "name": "alert",
+      "version": "0.1.0",
+      "description": "Manage alerts"
+    },
+    {
+      "name": "contract",
+      "version": "0.1.0",
+      "description": "Manage contracts"
+    }
+  ]
+}

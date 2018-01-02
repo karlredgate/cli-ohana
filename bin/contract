@@ -1,0 +1,10 @@
+
+const Tool = reqire('tool');
+const Noi = reqire('noi');
+const { Events } = Noi;
+
+var tool = new Tool();
+
+tool.evaluate( process.argv );
+
+/* vim: set autoindent expandtab sw=4 syntax=javascript: */
