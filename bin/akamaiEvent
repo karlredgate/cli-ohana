@@ -1,0 +1,39 @@
+
+const Tool = require('tool');
+const Noi = require('noi');
+const { Events } = Noi;
+
+const sep = "\t";
+
+function definition_info( obj ) {
+    var id = obj.eventDefinitionId;
+    var name = '"' + obj.eventName + '"';
+    var desc = '"' + obj.eventDescription + '"';
+    console.log( [id,name,desc].join(sep) );
+}
+
+function info( obj ) {
+    var id = obj.eventTypeId;
+    var name = obj.eventTypeName;
+    console.log( "Type: " + name + " (" + id + ")" );
+    obj.eventDefinitions.map( definition_info );
+}
+
+function per_event_type( dto ) {
+    if ( dto.length === 0 ) {
+        console.log( "empty event type list" );
+    }
+    dto.map( info );
+}
+
+var commands = {
+    types: function () {
+        Events.types( per_event_type );
+    }
+};
+
+var tool = new Tool( commands );
+
+tool.evaluate( process.argv );
+
+/* vim: set autoindent expandtab sw=4 syntax=javascript: */

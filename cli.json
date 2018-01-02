@@ -9,6 +9,11 @@
       "description": "Manage alerts"
     },
     {
+      "name": "event",
+      "version": "0.1.0",
+      "description": "Manage events"
+    },
+    {
       "name": "contract",
       "version": "0.1.0",
       "description": "Manage contracts"
