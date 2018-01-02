@@ -1,9 +1,30 @@
 
 const Tool = require('tool');
 const Noi = require('noi');
-const { Events } = Noi;
+const { Alerts } = Noi;
 
-var tool = new Tool();
+const sep = "\t";
+
+function template_info( obj ) {
+    var id = obj.templateId;
+    var name = obj.name;
+    // should check if the rel obj exists before deref href
+    var link = obj.links.find( function (entry) { return entry.rel === "self" } );
+    console.log( [id,link.href,name].join(sep) );
+}
+
+function per_template( dto ) {
+    var list = dto.data;
+    list.map( template_info );
+}
+
+var commands = {
+    templates: function () {
+        Alert.templates( per_template );
+    }
+};
+
+var tool = new Tool( commands );
 
 tool.evaluate( process.argv );
 

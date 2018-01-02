@@ -12,7 +12,7 @@ function per_contract( dto ) {
 }
 
 var commands = {
-    list: function ( dto ) {
+    list: function () {
         Contract.contracts( per_contract );
     }
 };
