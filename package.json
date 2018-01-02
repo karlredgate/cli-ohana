@@ -1,0 +1,24 @@
+{
+  "name": "akamai-cli-ohana",
+  "version": "0.1.0",
+  "description": "A family of Akamai OPEN CLI subcommands.",
+  "repository": "https://github.com/karlredgate/cli-ohana",
+  "license": "Apache-2.0",
+  "engines" : { 
+	"node" : ">=6.2.2" 
+  }, 
+  "scripts": {
+    "start": "node bin/alerts",
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "main": "./index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "tool": "karlredgate/node-tool",
+    "noi": "karlredgate/noi"
+  },
+  "devDependencies": {
+  }
+}
