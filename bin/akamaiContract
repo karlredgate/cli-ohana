@@ -1,6 +1,6 @@
 
-const Tool = reqire('tool');
-const Noi = reqire('noi');
+const Tool = require('tool');
+const Noi = require('noi');
 const { Events } = Noi;
 
 var tool = new Tool();
