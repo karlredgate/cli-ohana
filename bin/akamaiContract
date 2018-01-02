@@ -1,9 +1,19 @@
 
 const Tool = require('tool');
 const Noi = require('noi');
-const { Events } = Noi;
+const { Contract } = Noi;
 
-var tool = new Tool();
+function print_id( id ) {
+    console.log( "Contract: " + id );
+}
+
+var commands = {
+    list: function ( dto ) {
+        dto.map( print_id );
+    }
+};
+
+var tool = new Tool( commands );
 
 tool.evaluate( process.argv );
 
