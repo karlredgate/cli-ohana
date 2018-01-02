@@ -7,9 +7,13 @@ function print_id( id ) {
     console.log( "Contract: " + id );
 }
 
+function per_contract( dto ) {
+    dto.map( print_id );
+}
+
 var commands = {
     list: function ( dto ) {
-        dto.map( print_id );
+        Contract.contracts( per_contract );
     }
 };
 
