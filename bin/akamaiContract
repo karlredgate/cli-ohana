@@ -3,6 +3,10 @@ const Tool = require('tool');
 const Noi = require('noi');
 const { Contract } = Noi;
 
+function dump_dto( dto ) {
+    console.log( JSON.stringify(dto) );
+}
+
 function print_id( id ) {
     console.log( id );
 }
@@ -14,6 +18,9 @@ function per_contract( dto ) {
 var commands = {
     list: function () {
         Contract.contracts( per_contract );
+    },
+    show: function ( id ) {
+        Contract.contract( id, dump_dto );
     }
 };
 
