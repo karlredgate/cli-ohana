@@ -4,7 +4,7 @@ const Noi = require('noi');
 const { Contract } = Noi;
 
 function print_id( id ) {
-    console.log( "Contract: " + id );
+    console.log( id );
 }
 
 function per_contract( dto ) {
