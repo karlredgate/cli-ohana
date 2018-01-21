@@ -39,6 +39,9 @@ function dump_dto( dto ) {
 
 var commands = {
     groups: function ( accountId ) {
+        if ( accountId == null ) {
+            Tool.die( "AccountID is a required argument" );
+        }
         if ( this.verbose ) {
             UserAdmin.groups( accountId, list_group_details );
             return;
