@@ -15,8 +15,21 @@ function per_contract( dto ) {
     dto.map( print_id );
 }
 
+function print_contract( contract ) {
+    console.log( contract.contractId + "  :  " + contract.contractTypeName );
+}
+
+function print_details( dto ) {
+    console.log( "Account: " + dto.accountId );
+    dto.contracts.items.map( print_contract );
+}
+
 var commands = {
     list: function () {
+        if ( this.verbose ) { // use the PAPI API for details
+            Contract.contracts_details( print_details );
+            return;
+        }
         Contract.contracts( per_contract );
     },
     show: function ( id ) {
@@ -25,8 +38,8 @@ var commands = {
     "reporting-groups": function () {
         Contract.reporting_groups( dump_dto );
     },
-    cpcodes: function () {
-        Contract.cpcodes( dump_dto );
+    cpcodes: function ( contractId ) {
+        Contract.cpcodes( contractId, dump_dto );
     }
 };
 
