@@ -21,6 +21,9 @@ var commands = {
     },
     show: function ( id ) {
         Contract.contract( id, dump_dto );
+    },
+    cpcodes: function () {
+        Contract.reporting_groups( dump_dto );
     }
 };
 
