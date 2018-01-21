@@ -4,6 +4,11 @@
   },
   "commands": [
     {
+      "name": "user-admin",
+      "version": "0.1.0",
+      "description": "Manage users and groups"
+    },
+    {
       "name": "alert",
       "version": "0.1.0",
       "description": "Manage alerts"
