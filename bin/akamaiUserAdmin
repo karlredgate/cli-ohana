@@ -18,12 +18,34 @@ function per_template( dto ) {
     list.map( template_info );
 }
 
+function list_groups( dto ) {
+    dto.map( (g) => console.log( g.groupId ) );
+}
+
+function list_group_details( dto ) {
+    function details( group ) {
+        console.log( "ID:       " + group.groupId );
+        console.log( "Name:     " + group.groupName );
+        console.log( "Acct:     " + group.accountId );
+        console.log( "Created:  " + group.createdDate + " (" + group.createdBy + ")" );
+        console.log( "Modified: " + group.modifiedDate + " (" + group.modifiedBy + ")" );
+    }
+    dto.map( details );
+}
+
 function dump_dto( dto ) {
     console.log( JSON.stringify(dto) );
 }
 
 var commands = {
     groups: function ( accountId ) {
+        if ( this.verbose ) {
+            UserAdmin.groups( accountId, list_group_details );
+            return;
+        }
+        UserAdmin.groups( accountId, list_groups );
+    },
+    subgroups: function ( accountId, groupId ) {
         UserAdmin.groups( accountId, dump_dto );
     }
 };
