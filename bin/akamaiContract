@@ -41,7 +41,7 @@ var commands = {
     "reporting-groups": function () {
         Contract.reporting_groups( dump_dto );
     },
-    cpcodes: function ( contractId ) {
+    "cpcodes": function ( contractId ) {
         Contract.cpcodes( contractId, dump_dto );
     }
 };
