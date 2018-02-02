@@ -60,8 +60,8 @@ var commands = {
     "reporting-groups": function () {
         Contract.reporting_groups( Noi.dump_dto );
     },
-    "cpcodes": function ( contractId ) {
-        Contract.cpcodes( contractId, Noi.dump_dto );
+    "cpcodes": function ( contractId, groupId ) {
+        Contract.cpcodes( contractId, groupId, Noi.dump_dto );
     }
 };
 
