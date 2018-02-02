@@ -3,10 +3,6 @@ const Tool = require('tool');
 const Noi = require('noi');
 const { Contract } = Noi;
 
-function dump_dto( dto ) {
-    console.log( JSON.stringify(dto) );
-}
-
 function print_id( id ) {
     console.log( id );
 }
@@ -36,17 +32,16 @@ var commands = {
         Contract.contract( id, dump_dto );
     },
     "products": function ( contract ) {
-        // Contract.products( contract, print_id );
-        Contract.products( contract );
+        Contract.products( contract, Noi.dump_dto );
     },
     "account": function () {
         Contract.account( print_id );
     },
     "reporting-groups": function () {
-        Contract.reporting_groups( dump_dto );
+        Contract.reporting_groups( Noi.dump_dto );
     },
     "cpcodes": function ( contractId ) {
-        Contract.cpcodes( contractId, dump_dto );
+        Contract.cpcodes( contractId, Noi.dump_dto );
     }
 };
 
