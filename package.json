@@ -16,8 +16,8 @@
     "index.js"
   ],
   "dependencies": {
-    "tool": "karlredgate/node-tool",
-    "noi": "karlredgate/noi"
+    "tool": "git+https://github.com/karlredgate/node-tool",
+    "noi": "git+https://github.com/karlredgate/noi"
   },
   "devDependencies": {
   }
