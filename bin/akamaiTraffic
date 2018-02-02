@@ -1,0 +1,46 @@
+
+const Tool = require('tool');
+const Noi = require('noi');
+const { TrafficMgmt } = Noi;
+
+const sep = "\t";
+
+function template_info( obj ) {
+    var id = obj.templateId;
+    var name = obj.name;
+    // should check if the rel obj exists before deref href
+    var link = obj.links.find( function (entry) { return entry.rel === "self" } );
+    console.log( [id,link.href,name].join(sep) );
+}
+
+function per_template( dto ) {
+    var list = dto.data;
+    list.map( template_info );
+}
+
+var commands = {
+    contracts: function () {
+        TrafficMgmt.contracts( Noi.dump_dto );
+    },
+    groups: function () {
+        TrafficMgmt.groups( Noi.dump_dto );
+    },
+    domains: function () {
+        TrafficMgmt.domains( Noi.dump_dto );
+    },
+    domain: function (id) {
+        TrafficMgmt.domain( id, Noi.dump_dto );
+    },
+    data_centers: function (id) {
+        TrafficMgmt.data_centers( id, Noi.dump_dto );
+    },
+    identity: function () {
+        TrafficMgmt.identity( Noi.dump_dto );
+    }
+};
+
+var tool = new Tool( commands );
+
+tool.evaluate( process.argv );
+
+/* vim: set autoindent expandtab sw=4 syntax=javascript: */

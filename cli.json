@@ -19,6 +19,11 @@
       "description": "Manage events"
     },
     {
+      "name": "traffic",
+      "version": "0.1.0",
+      "description": "Manage global traffic management"
+    },
+    {
       "name": "contract",
       "version": "0.1.0",
       "description": "Manage contracts"
