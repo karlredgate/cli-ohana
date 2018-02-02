@@ -50,7 +50,31 @@ var commands = {
         TrafficMgmt.data_centers( id, Noi.dump_dto );
     },
     identity: function () {
-        TrafficMgmt.identity( Noi.dump_dto );
+        let verbose = this.verbose;
+
+        function info( contract ) {
+            console.log( "Contract:    " + contract.contractId );
+            console.log( "Features:    " + contract.features.join(", ") );
+            console.log( "Permissions: " + contract.permissions.join(", ") );
+        }
+
+        function report( dto ) {
+            if ( verbose == false ) {
+                console.log( dto.contactId );
+                return;
+            }
+            console.log( "Contact:     " + dto.contactId );
+            console.log( "Account:     " + dto.accountId );
+            console.log( "Username:    " + dto.userName );
+            console.log( "Name:        " + dto.lastName + ", " + dto.firstName );
+            console.log( "Email:       " + dto.email );
+            console.log( "Timezone:    " + dto.userTimeZone );
+            console.log( "Locale:      " + dto.locale );
+            dto.contracts.map( info );
+        }
+
+        TrafficMgmt.identity( report );
+        // TrafficMgmt.identity( Noi.dump_dto );
     }
 };
 
