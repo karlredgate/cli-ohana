@@ -20,6 +20,15 @@ function print_details( dto ) {
     dto.contracts.items.map( print_contract );
 }
 
+function product_id( product ) {
+    console.log( product.marketingProductId );
+}
+
+function per_product( dto ) {
+    console.log( this.constructor );
+    dto.products["marketing-products"].map( product_id );
+}
+
 var commands = {
     list: function () {
         if ( this.verbose ) { // use the PAPI API for details
@@ -32,7 +41,18 @@ var commands = {
         Contract.contract( id, dump_dto );
     },
     "products": function ( contract ) {
-        Contract.products( contract, Noi.dump_dto );
+        let verbose = this.verbose;
+        function product_info( product ) {
+            let id   = product.marketingProductId;
+            let name = product.marketingProductName;
+            if ( verbose == false ) return console.log(id);
+            console.log( id + " -- " + name );
+        }
+        function per_product( dto ) {
+            dto.products["marketing-products"].map( product_info );
+        }
+        let callback = this.json ? Noi.dump_dto : per_product;
+        Contract.products( contract, callback );
     },
     "account": function () {
         Contract.account( print_id );
