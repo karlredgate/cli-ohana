@@ -20,10 +20,25 @@ function per_template( dto ) {
 
 var commands = {
     contracts: function () {
-        TrafficMgmt.contracts( Noi.dump_dto );
+        let verbose = this.verbose;
+
+        function info( contract ) {
+            if ( verbose == false ) return console.log(contract.contractId);
+            console.log( contract.contractId + " " + contract.contractTypeName +
+                         " '" + contract.contractName + "'" );
+        }
+
+        TrafficMgmt.contracts( (dto) => dto.contracts.map(info) );
     },
     groups: function () {
-        TrafficMgmt.groups( Noi.dump_dto );
+        let verbose = this.verbose;
+
+        function info( group ) {
+            if ( verbose == false ) return console.log(group.groupId);
+            console.log( group.groupId + " '" + group.groupName + "' " + group.permissions.join(",") );
+        }
+
+        TrafficMgmt.groups( (dto) => dto.groups.map(info) );
     },
     domains: function () {
         TrafficMgmt.domains( Noi.dump_dto );
