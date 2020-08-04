@@ -26,14 +26,64 @@ function per_event_type( dto ) {
     dto.map( info );
 }
 
+function event_info( obj ) {
+    var id = obj.eventId;
+    var _type = obj.eventType;
+    var name = obj.eventTypeName;
+    var type = _type.eventTypeName + "/" + _type.eventDefinition.eventName;
+    var data = JSON.stringify(obj.eventData);
+    console.log( obj.eventTime + " " + obj.username + " " + type );
+    // console.log( "DATA: " + data );
+}
+
+function per_event( dto ) {
+    if ( dto.length === 0 ) {
+        console.log( "empty event type list" );
+    }
+    dto.events.map( event_info );
+}
+
 var commands = {
     types: function () {
         Events.types( per_event_type );
+    },
+    list: function () {
+        Events.events( per_event );
     }
 };
 
 var tool = new Tool( commands );
 
 tool.evaluate( process.argv );
+
+//     { eventId: 'c7d61bd6-dec9-40fe-b531-09b4364974ce',
+//       eventTime: '2020-07-28T16:59:48.107Z',
+//       eventData: [Array],
+//       eventType: [Object],
+//       impersonator: true,
+//       username: 'lmirkis' },
+//{
+//  "eventTypeId": "198",
+//  "eventTypeName": "API Definition",
+//  "eventDefinition": {
+//    "eventDefinitionId": "244168",
+//    "eventName": "Update an Endpoint",
+//    "eventDescription": "Updates endpoint and resources details."
+//  }
+//}
+//[
+//  { "key": "APIEndpoint",
+//    "value": "com.akamai.portal.apidefinitions.rest.dto.ApiEndpointWithResourceDto@3f0cb111"
+//  },
+//  { "key": "AccountID",
+//    "value": "B-C-1CJH4HN"
+//  },
+//  { "key": "PortalUserName",
+//    "value": "lmirkis"
+//  },
+//  { "key": "pulsar_host",
+//    "value": "p4-docker122.extranet.akamai.com"
+//  }
+//]
 
 /* vim: set autoindent expandtab sw=4 syntax=javascript: */
